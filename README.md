@@ -1,1 +1,2 @@
-# library
+# Library
+This is a The Odin Project Foundation assignment. In this Assignment , I'm tasked with creating a simple Library project primarily focusing on my previous learning of Javascript objects. 
