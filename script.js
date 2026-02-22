@@ -23,7 +23,7 @@ function addBooks(){
     const book = new Book(title,author,pages,read_status);
     Books.push(book);
     const container = document.querySelector(".bookInputCard");
-    const cardInputs = container.querySelectorAll("input");
+    const cardInputs = container.querySelectorAll("input","select");
     cardInputs.forEach(input=>{
         input.value="";
     })
@@ -42,7 +42,7 @@ function displayBooks(){
         <h3>${title}</h3>
         <p><strong>Author:</strong> ${author}</p>
         <p><strong>Pages:</strong> ${pages}</p>
-        <div class="status-label">Status: ${read_status}</div>
+        <p><strong>Status:</strong> ${read_status}</p>
     </div>
     <div class="card-actions">
         <button class="upd-btn btn">Change Status</button>
