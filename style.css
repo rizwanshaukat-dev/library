@@ -1,0 +1,115 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,Roboto, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.bookInputCard {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    margin: auto; 
+    width: 350px;
+    position: relative; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.bookInputCard[open] {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px 30px; 
+    gap: 12px;
+}
+.bookInputCard input{
+    margin-top: 5px ;
+    width: 90%;
+    padding: 10px;
+    border: 1px solid;
+    margin-left:15px;
+    border-radius: 5px;
+}
+.bookInputCard label{
+    margin-top: 5px ;
+    margin-left:15px ;
+    width: 90%;
+}
+.bookInputCard .submit{
+    width: 90%;
+    margin: auto;
+    padding: 5px;
+}
+#closeBtn {
+    position: absolute;
+    top: 2px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#closeBtn:hover {
+    color: red; 
+}
+.book-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 260px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-left: 5px solid #4f46e5; /* A nice accent border */
+}
+.book-card h3 {
+    margin-top: 0;
+    color: #1f2937;
+    font-size: 1.25rem;
+}
+
+.book-card p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+.btn {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+.card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+.upd-btn {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.dlt-btn {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+.bookInputCard::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+.bookContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 4px;
+
+}

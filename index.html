@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Library</title>
 </head>
 <body>
     <header>
-        <button class="addbook">Add a Book</button>
+        <button class="addbook" onclick="openCard()">Add a Book</button>
     </header>
-    <div class="bookInputCard">
+    <main>
+    <dialog class="bookInputCard">
+        <span id="closeBtn" onclick="closeCard()">&times;</span>
         <label for="bookName">Book Name:</label>
         <input type="text" name="bookname" id="bookName" value="">
         <label for="authName">Author:</label>
@@ -18,10 +23,13 @@
         <label for="pages">Total Pages:</label>
         <input type="number" name="page" id="pages" value="">
         <label for="readStat">Have you read it:</label>
-        <input type="text" name="readstat" id="readStat" value="">
-    </div>
+        <input type="text" name="readstat" id="readStat" value="" pattern="yes|no" placeholder="yes or no">
+        <button class="btn submit" onclick="addBooks()">Submit</button>
+    </dialog>
     <div class="bookContainer">
-        
+
     </div>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
