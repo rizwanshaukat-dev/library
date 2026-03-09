@@ -1,39 +1,40 @@
-const Books=[];
-function Book(title,author,pages,read_status) {
-    this.bookId=crypto.randomUUID();
-    this.title=title;
-    this.author=author;
-    this.pages=pages;
-    this.read_status=read_status;
+class Library {
+constructor() {
+    this.Books=[];
+    this.bindEvents();
 }
-function openCard(){
-    const container = document.querySelector(".bookInputCard");
-    container.showModal();
+openCard(){
+    document.querySelector(".bookInputCard").showModal();
 }
-function closeCard(){
-    const container = document.querySelector(".bookInputCard");
-    container.close();
+closeCard(){
+    document.querySelector(".bookInputCard").close()
 }
-function addBooks(){
+addBooks(){
     const title=document.getElementById("bookName").value;
     const author=document.getElementById("authName").value;
     const pages=document.getElementById("pages").value;
     const read_status=document.getElementById("readStat").value;
 
-    const book = new Book(title,author,pages,read_status);
-    Books.push(book);
+    const book ={
+        bookId:crypto.randomUUID(),
+        title,
+        author,
+        pages,
+        read_status
+    };
+    this.Books.push(book);
     const container = document.querySelector(".bookInputCard");
-    const cardInputs = container.querySelectorAll("input","select");
+    const cardInputs = container.querySelectorAll("input,select");
     cardInputs.forEach(input=>{
         input.value="";
     })
-    displayBooks();
+    this.displayBooks();
 
 }
-function displayBooks(){
+displayBooks(){
     const container= document.querySelector(".bookContainer")
     container.innerHTML="";
-    for (const{bookId,title,author,pages,read_status}of Books) {
+    for (const{bookId,title,author,pages,read_status}of this.Books) {
         const newDiv= document.createElement("div");
         newDiv.classList.add("book-card")
         newDiv.setAttribute("data-index",bookId)
@@ -52,24 +53,31 @@ function displayBooks(){
     container.appendChild(newDiv);
     }
 }
+bindEvents(){
 document.querySelector(".bookContainer").addEventListener("click", (e) => {
 if (e.target.classList.contains("dlt-btn")) {
         const card = e.target.closest(".book-card");
         const idToRemove = card.getAttribute("data-index");
-        const index = Books.findIndex(book => book.bookId === idToRemove);
+        const index = this.Books.findIndex(book => book.bookId === idToRemove);
         if (index !== -1) {
-            Books.splice(index, 1); // Remove from array
-            displayBooks();  
+            this.Books.splice(index, 1); // Remove from array
+            this.displayBooks();  
     }
 }
 if (e.target.classList.contains("upd-btn")) {
         const card = e.target.closest(".book-card");
         const id = card.getAttribute("data-index");
-        const book = Books.find(book => book.bookId === id);
+        const book = this.Books.find(book => book.bookId === id);
 
         if (book) {
             book.read_status = book.read_status === "Read" ? "Not Read" : "Read";
-            displayBooks();
+            this.displayBooks();
         }
     }
 });
+}
+}
+const library=new Library();
+document.getElementById("submit-btn").onclick = () => library.addBooks();
+document.getElementById("addbook-btn").onclick = () => library.openCard();
+document.getElementById("closeBtn").onclick= () => library.closeCard();
